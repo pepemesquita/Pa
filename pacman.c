@@ -9,11 +9,11 @@ int acabou(){
   return 0;
 }
 
-void move(char move){
+void move(char direcao){
+  
+  m.matriz[pacman.x][pacman.y] = '.';
 
-  int x,y;
-
-  switch (move){
+  switch (direcao){
   case 'a':
     m.matriz[pacman.x][pacman.y-1] = '@';
     pacman.y--;
@@ -35,14 +35,13 @@ void move(char move){
     break;
   }
 
-  m.matriz[pacman.x][pacman.y] = '.';
-
 }
 
 int main() {
   
   lemapa(&m);
   encontramapa(&m, &pacman, '@');
+
   do{
     imprimemapa(&m);
   

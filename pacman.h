@@ -16,6 +16,18 @@ struct posicao{
     int x,y;
 };
 
+void encontramapa(MAPA* m, POSICAO* p, char c){
+    for (int i = 0; i < m->linhas; i++){
+        for (int j = 0; j < m->colunas; j++){
+            if(m->matriz[i][j] == c){  
+                p->x = i;
+                p->y = j;
+                break;
+            }
+        }
+    }
+}
+
 void alocamapa(MAPA* m){
     m->matriz = malloc(sizeof(char*) * m->linhas);
 
@@ -60,20 +72,9 @@ void imprimemapa(MAPA* m){
     }
 }
 
-void encontramapa(MAPA* m, POSICAO* p, char c){
-    for (int i = 0; i < m->linhas; i++){
-        for (int j = 0; j < m->colunas; j++){
-            if(m->matriz[i][j] == '@'){  
-                p->x = i;
-                p->y = j;
-                break;
-            }
-        }
-    }
-}
-
 // Declare the functions here in the header file, no need to redeclare in the implementation
 void alocamapa(MAPA* m);
 void lemapa(MAPA* m);
 void liberamapa(MAPA* m);
 void imprimemapa(MAPA* m);
+void encontramapa(MAPA* m, POSICAO* pacman, char c);
